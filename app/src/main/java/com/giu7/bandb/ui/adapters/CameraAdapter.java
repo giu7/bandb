@@ -13,7 +13,11 @@ import com.bumptech.glide.Glide;
 import com.giu7.bandb.R;
 import com.giu7.bandb.models.Camera;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.List;
+
+import static com.giu7.bandb.MyUtils.getSiNo;
 
 public class CameraAdapter extends RecyclerView.Adapter {
     private LayoutInflater inflater;
@@ -39,8 +43,11 @@ public class CameraAdapter extends RecyclerView.Adapter {
         Camera camera = camere.get(position);
 
         Glide.with(context).load(camera.getFotoUrl()).centerCrop().into(cameraViewHolder.fotoCameraIv);
-        cameraViewHolder.nomeCameraTv.setText(camera.getNome());
-        cameraViewHolder.infoCameraTv.setText(camera.getPrezzo()+"");
+        cameraViewHolder.nomeCameraTv.setText("Camera "+ StringUtils.capitalize(camera.getNome()));
+        cameraViewHolder.lettiCameraTv.setText("Posti Letto: "+camera.getLetti());
+        cameraViewHolder.tvCameraTv.setText("TV in camera: "+getSiNo(camera.isTv()));
+        cameraViewHolder.bagnoCameraTv.setText("Bagno in camera: "+getSiNo(camera.isBagno()));
+        cameraViewHolder.prezzoCameraTv.setText(camera.getPrezzo()+"");
     }
 
     @Override
@@ -50,14 +57,17 @@ public class CameraAdapter extends RecyclerView.Adapter {
 
     private class CameraViewHolder extends RecyclerView.ViewHolder {
         public ImageView fotoCameraIv;
-        public TextView nomeCameraTv, infoCameraTv;
+        public TextView nomeCameraTv, lettiCameraTv, tvCameraTv, bagnoCameraTv, prezzoCameraTv;
 
         public CameraViewHolder(View view) {
             super(view);
 
             fotoCameraIv = itemView.findViewById(R.id.camera_foto_iv);
             nomeCameraTv = itemView.findViewById(R.id.camera_nome_tv);
-            infoCameraTv = itemView.findViewById(R.id.camera_info_tv);
+            lettiCameraTv = itemView.findViewById(R.id.camera_letti_tv);
+            tvCameraTv = itemView.findViewById(R.id.camera_tv_tv);
+            bagnoCameraTv = itemView.findViewById(R.id.camera_bagno_tv);
+            prezzoCameraTv = itemView.findViewById(R.id.camera_prezzo_tv);
         }
     }
 }
