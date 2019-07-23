@@ -1,7 +1,9 @@
-package com.giu7.bandb;
+package com.giu7.bandb.ui.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.giu7.bandb.R;
 
 public class MainActivity extends AppCompatActivity {
 

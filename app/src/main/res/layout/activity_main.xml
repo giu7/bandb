@@ -4,12 +4,15 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/header_layout">
+    android:id="@+id/header_layout"
 
-    <TextView
+    android:orientation="vertical"
+    >
+
+    <Button
         android:id="@+id/prenotazioni_tv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_alignParentTop="true"
 
         android:layout_margin="5dp"
@@ -17,16 +20,16 @@
         android:text="@string/prenotazioni"
         android:textAlignment="center" />
 
-    <TextView
+    <Button
         android:id="@+id/anagrafica_tv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
 
         android:layout_margin="5dp"
 
 
         android:layout_below="@id/prenotazioni_tv"
-        android:text="@string/anagrafica"
+        android:text="@string/camere"
         android:textAlignment="center" />
 
 
