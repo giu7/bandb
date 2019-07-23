@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    app:cardElevation="@dimen/cardview_default_elevation">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="10">
+
+        <ImageView
+            android:id="@+id/camera_foto_iv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+
+            android:scaleType="centerCrop"
+            android:src="@drawable/cameraverde"/>
+
+        <TextView
+            android:id="@+id/camera_nome_tv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+
+            android:text="CAMERA ROSSA" />
+
+        <TextView
+            android:id="@+id/camera_info_tv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+
+            android:text="INFO CAMERA" />
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

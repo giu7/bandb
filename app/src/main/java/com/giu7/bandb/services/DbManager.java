@@ -8,7 +8,7 @@ import android.content.Context;
 import com.giu7.bandb.dao.CameraDao;
 import com.giu7.bandb.models.Camera;
 
-@Database(entities = {Camera.class}, version = 1)
+@Database(entities = {Camera.class}, version = 2)
 public abstract class DbManager extends RoomDatabase {
     private static DbManager INSTANCE;
 
@@ -27,6 +27,7 @@ public abstract class DbManager extends RoomDatabase {
         if (INSTANCE == null) {
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(), DbManager.class, "note_db")
                     .allowMainThreadQueries()
+                    .fallbackToDestructiveMigration()
                     .build();
         }
         return INSTANCE;

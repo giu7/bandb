@@ -1,5 +1,6 @@
 package com.giu7.bandb.ui.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -45,18 +46,17 @@ public class MainActivity extends AppCompatActivity {
         camereBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //camereBtn.setText(camereBtn.getText()+"/");
-
-                List<Camera> camere = getDbManager().cameraDao().loadAllCamere();
-                camereBtn.setText(camere.toString());
+                startActivity(new Intent(MainActivity.this, CamereActivity.class));
             }
         });
     }
 
     private void setupCamere(){
-        Camera verde = new Camera("verde", 2, false, true, 777);
-        Camera blu = new Camera("blu", 3, true, false, 2);
-        Camera arancione = new Camera("arancione", 2, true, true, 66.6);
+        getDbManager().cameraDao().deleteAll();
+
+        Camera verde = new Camera(getString(R.string.verde), 2, false, true, getString(R.string.foto_camera_verde), 777);
+        Camera blu = new Camera(getString(R.string.blu), 3, true, false, getString(R.string.foto_camera_blu),2);
+        Camera arancione = new Camera(getString(R.string.arancione), 2, true, true, getString(R.string.foto_camera_arancione), 66.6);
 
         getDbManager().cameraDao().insertCamera(verde);
         getDbManager().cameraDao().insertCamera(blu);

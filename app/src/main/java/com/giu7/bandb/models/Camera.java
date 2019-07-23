@@ -14,13 +14,15 @@ public class Camera {
     private String nome;
     private int letti;
     private boolean tv, bagno;
+    private String fotoUrl;
     private double prezzo;
 
-    public Camera(String nome, int letti, boolean tv, boolean bagno, double prezzo) {
+    public Camera(String nome, int letti, boolean tv, boolean bagno, String fotoUrl, double prezzo) {
         this.nome = nome;
         this.letti = letti;
         this.tv = tv;
         this.bagno = bagno;
+        this.fotoUrl = fotoUrl;
         this.prezzo = prezzo;
     }
 
@@ -56,6 +58,14 @@ public class Camera {
         this.bagno = bagno;
     }
 
+    public String getFotoUrl() {
+        return fotoUrl;
+    }
+
+    public void setFotoUrl(String fotoUrl) {
+        this.fotoUrl = fotoUrl;
+    }
+
     public double getPrezzo() {
         return prezzo;
     }
@@ -85,6 +95,8 @@ public class Camera {
                 ", tv=" + tv +
                 ", bagno=" + bagno +
                 ", prezzo=" + prezzo +
+                ", fotoUrl=" + fotoUrl +
+
                 '}';
     }
 }

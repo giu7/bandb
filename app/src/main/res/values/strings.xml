@@ -3,4 +3,10 @@
     <string name="anagrafica">Anagrafica</string>
     <string name="prenotazioni">Prenotazioni</string>
     <string name="camere">Camere</string>
+    <string name="foto_camera_verde">https://www.bbagape.it/images/camera_verde/bbagape_camera_verde_00005.jpg</string>
+    <string name="verde">verde</string>
+    <string name="blu">blu</string>
+    <string name="arancione">arancione</string>
+    <string name="foto_camera_blu">http://www.bbresidenzaalba.it/images/camere/blu//bbresidenzaalba_camera-blu-1.jpg</string>
+    <string name="foto_camera_arancione">https://media-cdn.tripadvisor.com/media/photo-s/0e/29/1f/c4/camera-arancione-6-posti.jpg</string>
 </resources>
