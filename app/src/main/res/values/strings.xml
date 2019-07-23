@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BandB</string>
+    <string name="anagrafica">Anagrafica</string>
+    <string name="prenotazioni">Prenotazioni</string>
+</resources>
