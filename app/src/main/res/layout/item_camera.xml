@@ -44,7 +44,7 @@
             android:weightSum="4">
 
             <TextView
-                android:id="@+id/camergit a_letti_tv"
+                android:id="@+id/camera_letti_tv"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
