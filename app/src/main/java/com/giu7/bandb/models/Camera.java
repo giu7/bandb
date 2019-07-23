@@ -1,15 +1,22 @@
 package com.giu7.bandb.models;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
 import java.util.Objects;
 
-public class Stanza {
+@Entity
+public class Camera {
 
+    @PrimaryKey
+    @NonNull
     private String nome;
     private int letti;
     private boolean tv, bagno;
     private double prezzo;
 
-    public Stanza(String nome, int letti, boolean tv, boolean bagno, double prezzo) {
+    public Camera(String nome, int letti, boolean tv, boolean bagno, double prezzo) {
         this.nome = nome;
         this.letti = letti;
         this.tv = tv;
@@ -61,8 +68,8 @@ public class Stanza {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Stanza stanza = (Stanza) o;
-        return Objects.equals(nome, stanza.nome);
+        Camera camera = (Camera) o;
+        return Objects.equals(nome, camera.nome);
     }
 
     @Override
@@ -72,7 +79,7 @@ public class Stanza {
 
     @Override
     public String toString() {
-        return "Stanza{" +
+        return "Camera{" +
                 "nome='" + nome + '\'' +
                 ", letti=" + letti +
                 ", tv=" + tv +

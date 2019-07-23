@@ -10,7 +10,7 @@
     >
 
     <Button
-        android:id="@+id/prenotazioni_tv"
+        android:id="@+id/prenotazioni_btn"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_alignParentTop="true"
@@ -21,14 +21,14 @@
         android:textAlignment="center" />
 
     <Button
-        android:id="@+id/anagrafica_tv"
+        android:id="@+id/camere_btn"
         android:layout_width="match_parent"
         android:layout_height="200dp"
 
         android:layout_margin="5dp"
 
 
-        android:layout_below="@id/prenotazioni_tv"
+        android:layout_below="@id/prenotazioni_btn"
         android:text="@string/camere"
         android:textAlignment="center" />
 
