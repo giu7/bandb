@@ -43,10 +43,10 @@ public class CameraAdapter extends RecyclerView.Adapter {
         Camera camera = camere.get(position);
 
         Glide.with(context).load(camera.getFotoUrl()).centerCrop().into(cameraViewHolder.fotoCameraIv);
-        cameraViewHolder.nomeCameraTv.setText("Camera "+ StringUtils.capitalize(camera.getNome()));
+        cameraViewHolder.nomeCameraTv.setText(StringUtils.capitalize(camera.getNome())+"");
         cameraViewHolder.lettiCameraTv.setText(camera.getLetti()+"");
-        cameraViewHolder.tvCameraTv.setText("TV in camera: "+getSiNo(camera.isTv()));
-        cameraViewHolder.bagnoCameraTv.setText("Bagno in camera: "+getSiNo(camera.isBagno()));
+        cameraViewHolder.tvCameraTv.setText(getSiNo(camera.isTv())+"");
+        cameraViewHolder.bagnoCameraTv.setText(getSiNo(camera.isBagno())+"");
         cameraViewHolder.prezzoCameraTv.setText(camera.getPrezzo()+"");
     }
 

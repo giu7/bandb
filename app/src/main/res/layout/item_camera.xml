@@ -43,37 +43,82 @@
             android:orientation="vertical"
             android:weightSum="4">
 
-            <TextView
-                android:id="@+id/camera_letti_tv"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:layout_gravity="center"
-                android:layout_margin="3dp" />
+                android:orientation="horizontal"
+                android:layout_margin="3dp">
 
-            <TextView
-                android:id="@+id/camera_tv_tv"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:layout_margin="3dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Posti Letto: "/>
 
-            <TextView
-                android:id="@+id/camera_bagno_tv"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:layout_margin="3dp" />
+                <TextView
+                    android:id="@+id/camera_letti_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/camera_prezzo_tv"
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:layout_gravity="center"
-                android:layout_margin="3dp" />
+                android:orientation="horizontal"
+                android:layout_margin="3dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TV in camera: "/>
+
+                <TextView
+                    android:id="@+id/camera_tv_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_margin="3dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bagno in camera: "/>
+
+                <TextView
+                    android:id="@+id/camera_bagno_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_margin="3dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Prezzo per notte: € "/>
+
+                <TextView
+                    android:id="@+id/camera_prezzo_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                
+            </LinearLayout>
 
         </LinearLayout>
 
