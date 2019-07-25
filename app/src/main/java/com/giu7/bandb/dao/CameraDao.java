@@ -18,10 +18,10 @@ public interface CameraDao {
     void insertCamera(Camera camera);
 
     @Query("SELECT * FROM Camera")
-    List<Camera> loadAllCamere();
+    List<Camera> getAllCamere();
 
     @Query("DELETE FROM Camera")
-    void deleteAll();
+    void deleteAllCamere();
 
     @Delete
     void deleteCamera(Camera camera);

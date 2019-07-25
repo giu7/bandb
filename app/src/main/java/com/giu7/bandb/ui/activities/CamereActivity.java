@@ -28,7 +28,7 @@ public class CamereActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camere);
 
-        camere = getDbManager().cameraDao().loadAllCamere();
+        camere = getDbManager().cameraDao().getAllCamere();
 
         camereRV = findViewById(R.id.camere_rv);
         layoutManager = new LinearLayoutManager(this);

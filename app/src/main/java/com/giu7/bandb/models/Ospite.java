@@ -1,9 +1,16 @@
 package com.giu7.bandb.models;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
 import java.util.Objects;
 
+@Entity
 public class Ospite {
 
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
     private int id;
     private String nome, cognome, telefono, mail, user, password;
 
@@ -18,6 +25,10 @@ public class Ospite {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {

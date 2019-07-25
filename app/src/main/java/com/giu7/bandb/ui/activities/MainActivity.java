@@ -10,8 +10,6 @@ import com.giu7.bandb.R;
 import com.giu7.bandb.models.Camera;
 import com.giu7.bandb.services.DbManager;
 
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
 
     private DbManager dbManager;
@@ -52,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupCamere(){
-        getDbManager().cameraDao().deleteAll();
+        getDbManager().cameraDao().deleteAllCamere();
 
         Camera verde = new Camera(getString(R.string.verde), 2, false, true, getString(R.string.foto_camera_verde), 777);
         Camera blu = new Camera(getString(R.string.blu), 3, true, false, getString(R.string.foto_camera_blu),2);
