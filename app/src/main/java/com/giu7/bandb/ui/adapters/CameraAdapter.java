@@ -17,7 +17,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
-import static com.giu7.bandb.MyUtils.getSiNo;
+import static com.giu7.bandb.utils.MyUtils.getSiNo;
 
 public class CameraAdapter extends RecyclerView.Adapter {
     private LayoutInflater inflater;

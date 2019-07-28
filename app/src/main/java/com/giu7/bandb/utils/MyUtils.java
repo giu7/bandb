@@ -1,4 +1,4 @@
-package com.giu7.bandb;
+package com.giu7.bandb.utils;
 
 public class MyUtils {
 

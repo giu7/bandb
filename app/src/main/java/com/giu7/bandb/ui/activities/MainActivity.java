@@ -10,9 +10,15 @@ import android.widget.Button;
 import com.giu7.bandb.R;
 import com.giu7.bandb.models.Camera;
 import com.giu7.bandb.models.Ospite;
+import com.giu7.bandb.models.Prenotazione;
 import com.giu7.bandb.services.DbManager;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity";
 
     private DbManager dbManager;
 
@@ -52,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setup(){
+        getDbManager().prenotazioneDao().deleteAllPrenotazioni();
         getDbManager().cameraDao().deleteAllCamere();
         getDbManager().ospiteDao().deleteAllOspiti();
 
@@ -67,13 +74,35 @@ public class MainActivity extends AppCompatActivity {
         Ospite lillo = new Ospite("Alessandro", "Littera", "3453434343", "lillo@lillolandia.it", "lillo", "pecora");
         Ospite geta = new Ospite("Gaetano", "La Porta", "34545454545", "geta@ares.it", "geta", "ares");
 
-        Log.d("MAIN", giu.toString());
-
         getDbManager().ospiteDao().insertOspite(giu);
         getDbManager().ospiteDao().insertOspite(lillo);
         getDbManager().ospiteDao().insertOspite(geta);
 
-        Log.d("MAIN", giu.toString());
+        LocalDateTime checkIn1 = LocalDateTime.of(2019,7,1,0,0);
+        LocalDateTime checkOut1 = LocalDateTime.of(2020, 7, 1, 0, 0);
+        Ospite ospite1 = getDbManager().ospiteDao().getFromNomeAndCognome("Giuseppe", "Piano");
+        Prenotazione p1 = new Prenotazione(checkIn1, checkOut1, true, "Bonifico",  ospite1.getId(), "verde");
 
+        LocalDateTime checkIn2 = LocalDateTime.of(2019,7,2,0,0);
+        LocalDateTime checkOut2 = LocalDateTime.of(2020, 7, 2, 0, 0);
+        Ospite ospite2 = getDbManager().ospiteDao().getFromNomeAndCognome("Gaetano", "La Porta");
+        Prenotazione p2 = new Prenotazione(checkIn2, checkOut2, true, "Assegno",  ospite2.getId(), "blu");
+
+        LocalDateTime checkIn3 = LocalDateTime.of(2019,7,3,0,0);
+        LocalDateTime checkOut3 = LocalDateTime.of(2020, 7, 3, 0, 0);
+        Ospite ospite3 = getDbManager().ospiteDao().getFromNomeAndCognome("Alessandro", "Littera");
+        Prenotazione p3 = new Prenotazione(checkIn3, checkOut3, false, "Contanti",  ospite3.getId(), "arancione");
+
+        getDbManager().prenotazioneDao().insert(p1);
+        getDbManager().prenotazioneDao().insert(p2);
+        getDbManager().prenotazioneDao().insert(p3);
+
+        List<Camera> camere = getDbManager().cameraDao().getAllCamere();
+        List<Ospite> ospiti = getDbManager().ospiteDao().getAllOspiti();
+        List<Prenotazione> prenotazioni = getDbManager().prenotazioneDao().getAllPrenotazioni();
+
+        Log.d(TAG, camere.toString());
+        Log.d(TAG, ospiti.toString());
+        Log.d(TAG, prenotazioni.toString());
     }
 }

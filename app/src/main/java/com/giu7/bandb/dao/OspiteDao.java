@@ -22,4 +22,7 @@ public interface OspiteDao {
 
     @Delete
     void deleteOspite(Ospite ospite);
+
+    @Query("SELECT * FROM Ospite WHERE nome LIKE :nome AND cognome LIKE :cognome")
+    Ospite getFromNomeAndCognome (String nome, String cognome);
 }

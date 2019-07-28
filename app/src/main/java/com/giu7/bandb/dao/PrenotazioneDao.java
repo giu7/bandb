@@ -20,4 +20,7 @@ public interface PrenotazioneDao {
 
     @Delete
     void delete(Prenotazione prenotazione);
+
+    @Query("DELETE FROM Prenotazione")
+    void deleteAllPrenotazioni();
 }

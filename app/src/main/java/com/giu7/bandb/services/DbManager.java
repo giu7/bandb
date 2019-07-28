@@ -7,15 +7,18 @@ import android.content.Context;
 
 import com.giu7.bandb.dao.CameraDao;
 import com.giu7.bandb.dao.OspiteDao;
+import com.giu7.bandb.dao.PrenotazioneDao;
 import com.giu7.bandb.models.Camera;
 import com.giu7.bandb.models.Ospite;
+import com.giu7.bandb.models.Prenotazione;
 
-@Database(entities = {Camera.class, Ospite.class}, version = 2)
+@Database(entities = {Camera.class, Ospite.class, Prenotazione.class}, version = 3)
 public abstract class DbManager extends RoomDatabase {
     private static DbManager INSTANCE;
 
     public abstract CameraDao cameraDao();
     public abstract OspiteDao ospiteDao();
+    public abstract PrenotazioneDao prenotazioneDao();
 
     public static DbManager getInMemoryDatabase(Context context) {
         if (INSTANCE == null){

@@ -3,8 +3,12 @@ package com.giu7.bandb.models;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverter;
+import android.arch.persistence.room.TypeConverters;
 import android.os.Build;
 import android.support.annotation.NonNull;
+
+import com.giu7.bandb.utils.LocalDateTimeConverter;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -25,6 +29,7 @@ public class Prenotazione {
     @PrimaryKey(autoGenerate = true)
     @NonNull
     private int id;
+    @TypeConverters(LocalDateTimeConverter.class)
     private LocalDateTime data_inizio, data_fine, creation_time;
     private boolean pagato;
     private String metodo_pagamento;
@@ -46,6 +51,10 @@ public class Prenotazione {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public LocalDateTime getData_inizio() {
