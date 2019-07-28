@@ -45,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
         prenotazioniBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                prenotazioniBtn.setText(prenotazioniBtn.getText()+"-");
+                //prenotazioniBtn.setText(prenotazioniBtn.getText()+"-");
+                startActivity(new Intent(MainActivity.this, PrenotazioniActivity.class));
             }
         });
 
