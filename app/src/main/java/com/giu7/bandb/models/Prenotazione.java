@@ -1,9 +1,29 @@
 package com.giu7.bandb.models;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.PrimaryKey;
+import android.os.Build;
+import android.support.annotation.NonNull;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+@Entity (foreignKeys = {
+        @ForeignKey(
+                entity = Camera.class,
+                parentColumns = "nome",
+                childColumns = "nome_stanza"
+        ),
+        @ForeignKey(
+                entity = Ospite.class,
+                parentColumns = "id",
+                childColumns = "id_ospite"
+        )
+})
 public class Prenotazione {
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
     private int id;
     private LocalDateTime data_inizio, data_fine, creation_time;
     private boolean pagato;
@@ -12,14 +32,16 @@ public class Prenotazione {
     private int id_ospite;
     private String nome_stanza;
 
-    public Prenotazione(LocalDateTime data_inizio, LocalDateTime data_fine, LocalDateTime creation_time, boolean pagato, String metodo_pagamento, int id_ospite, String nome_stanza) {
+    public Prenotazione(LocalDateTime data_inizio, LocalDateTime data_fine, boolean pagato, String metodo_pagamento, int id_ospite, String nome_stanza) {
         this.data_inizio = data_inizio;
         this.data_fine = data_fine;
-        this.creation_time = creation_time;
         this.pagato = pagato;
         this.metodo_pagamento = metodo_pagamento;
         this.id_ospite = id_ospite;
         this.nome_stanza = nome_stanza;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            this.creation_time = LocalDateTime.now();
+        }
     }
 
     public int getId() {
