@@ -2,7 +2,10 @@ package com.giu7.bandb.ui.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -24,8 +27,7 @@ public class PrenotazioniActivity extends AppCompatActivity {
 
     private DbManager dbManager;
 
-    DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-
+    private DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
     private TableLayout table;
     private List<Prenotazione> prenotazioni;
@@ -36,7 +38,7 @@ public class PrenotazioniActivity extends AppCompatActivity {
         setContentView(R.layout.activity_prenotazioni);
 
         table = findViewById(R.id.prenotazioni_table);
-        table.setStretchAllColumns(true);
+        //table.setStretchAllColumns(true);
 
         prenotazioni = getDbManager().prenotazioneDao().getAllPrenotazioni();
 
@@ -48,32 +50,38 @@ public class PrenotazioniActivity extends AppCompatActivity {
 
     private TableRow generateRow(Prenotazione prenotazione){
         TableRow tableRow = new TableRow(this);
-        tableRow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+        TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, 150);
+        tableRow.setLayoutParams(layoutParams);
+        tableRow.setOrientation(LinearLayout.HORIZONTAL);
+        tableRow.setWeightSum(3);
 
         Ospite ospite = getDbManager().ospiteDao().getById(prenotazione.getIdOspite());
         TextView ospiteTV = new TextView(this);
         ospiteTV.setText(ospite.getNome()+" "+ospite.getCognome());
-        ospiteTV.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+        setGeneralAttributes(ospiteTV);
         tableRow.addView(ospiteTV);
 
         TextView cameraTV = new TextView(this);
         cameraTV.setText(StringUtils.capitalize(prenotazione.getNomeStanza()));
-        cameraTV.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+        setGeneralAttributes(cameraTV);
         tableRow.addView(cameraTV);
 
         TextView checkInTV = new TextView(this);
         Date checkIn = Date.from(prenotazione.getDataInizio().atZone(ZoneId.systemDefault()).toInstant());
         checkInTV.setText(formatter.format(checkIn));
-        checkInTV.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+        setGeneralAttributes(checkInTV);
         tableRow.addView(checkInTV);
 
-        TextView checkOutTV = new TextView(this);
-        Date checkOut = Date.from(prenotazione.getDataFine().atZone(ZoneId.systemDefault()).toInstant());
-        checkOutTV.setText(formatter.format(checkOut));
-        checkOutTV.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-        tableRow.addView(checkOutTV);
+        tableRow.setBackgroundResource(R.drawable.border);
 
+        tableRow.setPadding(10,10,10,10);
         return tableRow;
+    }
+
+    private void setGeneralAttributes(TextView textView){
+        textView.setLayoutParams(new TableRow.LayoutParams(0, 150, 1f));
+        textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        textView.setGravity(Gravity.CENTER);
     }
 
     private DbManager getDbManager(){
