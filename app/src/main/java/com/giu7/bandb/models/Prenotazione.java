@@ -16,12 +16,12 @@ import java.util.Objects;
         @ForeignKey(
                 entity = Camera.class,
                 parentColumns = "nome",
-                childColumns = "nome_stanza"
+                childColumns = "nomeStanza"
         ),
         @ForeignKey(
                 entity = Ospite.class,
                 parentColumns = "id",
-                childColumns = "id_ospite"
+                childColumns = "idOspite"
         )
 })
 public class Prenotazione {
@@ -29,22 +29,22 @@ public class Prenotazione {
     @NonNull
     private int id;
     @TypeConverters(LocalDateTimeTypeConverters.class)
-    private LocalDateTime data_inizio, data_fine, creation_time;
+    private LocalDateTime dataInizio, dataFine, creationTime;
     private boolean pagato;
-    private String metodo_pagamento;
+    private String metodoPagamento;
 
-    private int id_ospite;
-    private String nome_stanza;
+    private int idOspite;
+    private String nomeStanza;
 
-    public Prenotazione(LocalDateTime data_inizio, LocalDateTime data_fine, boolean pagato, String metodo_pagamento, int id_ospite, String nome_stanza) {
-        this.data_inizio = data_inizio;
-        this.data_fine = data_fine;
+    public Prenotazione(LocalDateTime dataInizio, LocalDateTime dataFine, boolean pagato, String metodoPagamento, int idOspite, String nomeStanza) {
+        this.dataInizio = dataInizio;
+        this.dataFine = dataFine;
         this.pagato = pagato;
-        this.metodo_pagamento = metodo_pagamento;
-        this.id_ospite = id_ospite;
-        this.nome_stanza = nome_stanza;
+        this.metodoPagamento = metodoPagamento;
+        this.idOspite = idOspite;
+        this.nomeStanza = nomeStanza;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            this.creation_time = LocalDateTime.now();
+            this.creationTime = LocalDateTime.now();
         }
     }
 
@@ -56,28 +56,28 @@ public class Prenotazione {
         this.id = id;
     }
 
-    public LocalDateTime getData_inizio() {
-        return data_inizio;
+    public LocalDateTime getDataInizio() {
+        return dataInizio;
     }
 
-    public void setData_inizio(LocalDateTime data_inizio) {
-        this.data_inizio = data_inizio;
+    public void setDataInizio(LocalDateTime dataInizio) {
+        this.dataInizio = dataInizio;
     }
 
-    public LocalDateTime getData_fine() {
-        return data_fine;
+    public LocalDateTime getDataFine() {
+        return dataFine;
     }
 
-    public void setData_fine(LocalDateTime data_fine) {
-        this.data_fine = data_fine;
+    public void setDataFine(LocalDateTime dataFine) {
+        this.dataFine = dataFine;
     }
 
-    public LocalDateTime getCreation_time() {
-        return creation_time;
+    public LocalDateTime getCreationTime() {
+        return creationTime;
     }
 
-    public void setCreation_time(LocalDateTime creation_time) {
-        this.creation_time = creation_time;
+    public void setCreationTime(LocalDateTime creationTime) {
+        this.creationTime = creationTime;
     }
 
     public boolean isPagato() {
@@ -88,28 +88,28 @@ public class Prenotazione {
         this.pagato = pagato;
     }
 
-    public String getMetodo_pagamento() {
-        return metodo_pagamento;
+    public String getMetodoPagamento() {
+        return metodoPagamento;
     }
 
-    public void setMetodo_pagamento(String metodo_pagamento) {
-        this.metodo_pagamento = metodo_pagamento;
+    public void setMetodoPagamento(String metodoPagamento) {
+        this.metodoPagamento = metodoPagamento;
     }
 
-    public int getId_ospite() {
-        return id_ospite;
+    public int getIdOspite() {
+        return idOspite;
     }
 
-    public void setId_ospite(int id_ospite) {
-        this.id_ospite = id_ospite;
+    public void setIdOspite(int idOspite) {
+        this.idOspite = idOspite;
     }
 
-    public String getNome_stanza() {
-        return nome_stanza;
+    public String getNomeStanza() {
+        return nomeStanza;
     }
 
-    public void setNome_stanza(String nome_stanza) {
-        this.nome_stanza = nome_stanza;
+    public void setNomeStanza(String nomeStanza) {
+        this.nomeStanza = nomeStanza;
     }
 
     @Override
@@ -117,28 +117,28 @@ public class Prenotazione {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Prenotazione that = (Prenotazione) o;
-        return id_ospite == that.id_ospite &&
-                Objects.equals(data_inizio, that.data_inizio) &&
-                Objects.equals(data_fine, that.data_fine) &&
-                Objects.equals(nome_stanza, that.nome_stanza);
+        return idOspite == that.idOspite &&
+                Objects.equals(dataInizio, that.dataInizio) &&
+                Objects.equals(dataFine, that.dataFine) &&
+                Objects.equals(nomeStanza, that.nomeStanza);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(data_inizio, data_fine, id_ospite, nome_stanza);
+        return Objects.hash(dataInizio, dataFine, idOspite, nomeStanza);
     }
 
     @Override
     public String toString() {
         return "Prenotazione{" +
                 "id=" + id +
-                ", data_inizio=" + data_inizio +
-                ", data_fine=" + data_fine +
-                ", creation_time=" + creation_time +
+                ", dataInizio=" + dataInizio +
+                ", dataFine=" + dataFine +
+                ", creationTime=" + creationTime +
                 ", pagato=" + pagato +
-                ", metodo_pagamento='" + metodo_pagamento + '\'' +
-                ", id_ospite=" + id_ospite +
-                ", nome_stanza='" + nome_stanza + '\'' +
+                ", metodoPagamento='" + metodoPagamento + '\'' +
+                ", idOspite=" + idOspite +
+                ", nomeStanza='" + nomeStanza + '\'' +
                 '}';
     }
 }

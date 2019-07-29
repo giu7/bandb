@@ -12,7 +12,7 @@ import com.giu7.bandb.models.Camera;
 import com.giu7.bandb.models.Ospite;
 import com.giu7.bandb.models.Prenotazione;
 
-@Database(entities = {Camera.class, Ospite.class, Prenotazione.class}, version = 3)
+@Database(entities = {Camera.class, Ospite.class, Prenotazione.class}, version = 4)
 public abstract class DbManager extends RoomDatabase {
     private static DbManager INSTANCE;
 

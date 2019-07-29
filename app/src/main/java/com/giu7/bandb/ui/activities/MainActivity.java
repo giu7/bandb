@@ -81,17 +81,17 @@ public class MainActivity extends AppCompatActivity {
 
         LocalDateTime checkIn1 = LocalDateTime.of(2019,7,1,0,0);
         LocalDateTime checkOut1 = LocalDateTime.of(2020, 7, 1, 0, 0);
-        Ospite ospite1 = getDbManager().ospiteDao().getFromNomeAndCognome("Giuseppe", "Piano");
+        Ospite ospite1 = getDbManager().ospiteDao().getByNomeAndCognome("Giuseppe", "Piano");
         Prenotazione p1 = new Prenotazione(checkIn1, checkOut1, true, "Bonifico",  ospite1.getId(), "verde");
 
         LocalDateTime checkIn2 = LocalDateTime.of(2019,7,2,0,0);
         LocalDateTime checkOut2 = LocalDateTime.of(2020, 7, 2, 0, 0);
-        Ospite ospite2 = getDbManager().ospiteDao().getFromNomeAndCognome("Gaetano", "La Porta");
+        Ospite ospite2 = getDbManager().ospiteDao().getByNomeAndCognome("Gaetano", "La Porta");
         Prenotazione p2 = new Prenotazione(checkIn2, checkOut2, true, "Assegno",  ospite2.getId(), "blu");
 
         LocalDateTime checkIn3 = LocalDateTime.of(2019,7,3,0,0);
         LocalDateTime checkOut3 = LocalDateTime.of(2020, 7, 3, 0, 0);
-        Ospite ospite3 = getDbManager().ospiteDao().getFromNomeAndCognome("Alessandro", "Littera");
+        Ospite ospite3 = getDbManager().ospiteDao().getByNomeAndCognome("Alessandro", "Littera");
         Prenotazione p3 = new Prenotazione(checkIn3, checkOut3, false, "Contanti",  ospite3.getId(), "arancione");
 
         getDbManager().prenotazioneDao().insert(p1);

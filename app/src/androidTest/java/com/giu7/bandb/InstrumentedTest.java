@@ -3,6 +3,7 @@ package com.giu7.bandb;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
+import android.util.Log;
 
 import com.giu7.bandb.models.Camera;
 import com.giu7.bandb.models.Ospite;
@@ -15,6 +16,8 @@ import static org.junit.Assert.*;
 
 @RunWith(AndroidJUnit4.class)
 public class InstrumentedTest {
+    private static final String TAG = "InstrumentedTest";
+
 
     private DbManager dbManager;
     private Context context = InstrumentationRegistry.getTargetContext();

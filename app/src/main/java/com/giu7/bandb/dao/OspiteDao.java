@@ -24,5 +24,8 @@ public interface OspiteDao {
     void deleteOspite(Ospite ospite);
 
     @Query("SELECT * FROM Ospite WHERE nome LIKE :nome AND cognome LIKE :cognome")
-    Ospite getFromNomeAndCognome (String nome, String cognome);
+    Ospite getByNomeAndCognome(String nome, String cognome);
+
+    @Query("SELECT * FROM Ospite where id = :id")
+    Ospite getById (int id);
 }
