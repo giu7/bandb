@@ -15,6 +15,7 @@ import com.giu7.bandb.R;
 import com.giu7.bandb.models.Ospite;
 import com.giu7.bandb.models.Prenotazione;
 import com.giu7.bandb.services.DbManager;
+import com.giu7.bandb.utils.MyUtils;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -28,7 +29,7 @@ public class PrenotazioniActivity extends AppCompatActivity {
 
     private DbManager dbManager;
 
-    private DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+    //private DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
     private TableLayout table;
     private List<Prenotazione> prenotazioni;
@@ -78,7 +79,7 @@ public class PrenotazioniActivity extends AppCompatActivity {
         TextView checkInTV = new TextView(this);
         checkInTV.setId(R.id.prenotazioni_checkin_tv);
         Date checkIn = Date.from(prenotazione.getDataInizio().atZone(ZoneId.systemDefault()).toInstant());
-        checkInTV.setText(formatter.format(checkIn));
+        checkInTV.setText(MyUtils.formatter_ddMMyyyy.format(checkIn));
         setGeneralAttributes(checkInTV);
         tableRow.addView(checkInTV);
 

@@ -9,4 +9,7 @@
     <string name="arancione">arancione</string>
     <string name="foto_camera_blu">http://www.bbresidenzaalba.it/images/camere/blu//bbresidenzaalba_camera-blu-1.jpg</string>
     <string name="foto_camera_arancione">https://media-cdn.tripadvisor.com/media/photo-s/0e/29/1f/c4/camera-arancione-6-posti.jpg</string>
+    <string name="dettagli_prenotazione">Dettagli prenotazione</string>
+    <string name="dettagli_camera">Dettagli camera</string>
+    <string name="dettagli_ospite">Dettagli ospite</string>
 </resources>
