@@ -25,13 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private Button prenotazioniBtn;
     private Button camereBtn;
 
-    private DbManager getDbManager(){
-        if (dbManager == null){
-            dbManager = DbManager.getDatabase(this);
-        }
-        return dbManager;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,5 +98,9 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, camere.toString());
         Log.d(TAG, ospiti.toString());
         Log.d(TAG, prenotazioni.toString());
+    }
+
+    private DbManager getDbManager(){
+        return dbManager == null ? dbManager = DbManager.getDatabase(this) : dbManager;
     }
 }

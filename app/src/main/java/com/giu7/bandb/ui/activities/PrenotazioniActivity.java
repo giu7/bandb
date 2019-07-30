@@ -1,5 +1,6 @@
 package com.giu7.bandb.ui.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -38,35 +39,44 @@ public class PrenotazioniActivity extends AppCompatActivity {
         setContentView(R.layout.activity_prenotazioni);
 
         table = findViewById(R.id.prenotazioni_table);
-        //table.setStretchAllColumns(true);
 
         prenotazioni = getDbManager().prenotazioneDao().getAllPrenotazioni();
 
         for (Prenotazione prenotazione : prenotazioni){
-            TableRow newRow = generateRow(prenotazione);
+            final TableRow newRow = generateRow(prenotazione);
             table.addView(newRow);
         }
     }
 
-    private TableRow generateRow(Prenotazione prenotazione){
-        TableRow tableRow = new TableRow(this);
+    private TableRow generateRow(final Prenotazione prenotazione){
+        final TableRow tableRow = new TableRow(this);
         TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, 150);
         tableRow.setLayoutParams(layoutParams);
         tableRow.setOrientation(LinearLayout.HORIZONTAL);
-        tableRow.setWeightSum(3);
+        tableRow.setWeightSum(4);
 
         Ospite ospite = getDbManager().ospiteDao().getById(prenotazione.getIdOspite());
-        TextView ospiteTV = new TextView(this);
-        ospiteTV.setText(ospite.getNome()+" "+ospite.getCognome());
-        setGeneralAttributes(ospiteTV);
-        tableRow.addView(ospiteTV);
+
+        TextView nomeTV = new TextView(this);
+        nomeTV.setId(R.id.prenotazioni_nome_tv);
+        nomeTV.setText(ospite.getNome());
+        setGeneralAttributes(nomeTV);
+        tableRow.addView(nomeTV);
+
+        TextView cognomeTV = new TextView(this);
+        cognomeTV.setId(R.id.prenotazioni_cognome_tv);
+        cognomeTV.setText(ospite.getCognome());
+        setGeneralAttributes(cognomeTV);
+        tableRow.addView(cognomeTV);
 
         TextView cameraTV = new TextView(this);
+        cameraTV.setId(R.id.prenotazioni_camera_tv);
         cameraTV.setText(StringUtils.capitalize(prenotazione.getNomeStanza()));
         setGeneralAttributes(cameraTV);
         tableRow.addView(cameraTV);
 
         TextView checkInTV = new TextView(this);
+        checkInTV.setId(R.id.prenotazioni_checkin_tv);
         Date checkIn = Date.from(prenotazione.getDataInizio().atZone(ZoneId.systemDefault()).toInstant());
         checkInTV.setText(formatter.format(checkIn));
         setGeneralAttributes(checkInTV);
@@ -75,6 +85,16 @@ public class PrenotazioniActivity extends AppCompatActivity {
         tableRow.setBackgroundResource(R.drawable.border);
 
         tableRow.setPadding(10,10,10,10);
+
+        tableRow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PrenotazioniActivity.this, PrenotazioneDetailActivity.class);
+                intent.putExtra("idPrenotazione", prenotazione.getId());
+                startActivity(intent);
+            }
+        });
+
         return tableRow;
     }
 
@@ -85,9 +105,6 @@ public class PrenotazioniActivity extends AppCompatActivity {
     }
 
     private DbManager getDbManager(){
-        if (dbManager == null){
-            dbManager = DbManager.getDatabase(this);
-        }
-        return dbManager;
+        return dbManager == null ? dbManager = DbManager.getDatabase(this) : dbManager;
     }
 }

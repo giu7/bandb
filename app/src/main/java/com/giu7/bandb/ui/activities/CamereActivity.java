@@ -39,10 +39,7 @@ public class CamereActivity extends AppCompatActivity {
     }
 
     private DbManager getDbManager(){
-        if (dbManager == null){
-            dbManager = DbManager.getDatabase(this);
-        }
-        return dbManager;
+        return dbManager == null ? dbManager = DbManager.getDatabase(this) : dbManager;
     }
 
 }

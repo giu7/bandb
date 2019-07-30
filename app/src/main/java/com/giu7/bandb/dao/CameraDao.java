@@ -25,4 +25,7 @@ public interface CameraDao {
 
     @Delete
     void deleteCamera(Camera camera);
+
+    @Query("SELECT * FROM Camera WHERE nome like :nome")
+    Camera getById(String nome);
 }

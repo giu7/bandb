@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="prenotazioni_nome_tv" />
+    <item type="id" name="prenotazioni_cognome_tv" />
+    <item type="id" name="prenotazioni_camera_tv" />
+    <item type="id" name="prenotazioni_checkin_tv" />
+
+</resources>

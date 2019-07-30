@@ -15,7 +15,7 @@ public interface PrenotazioneDao {
     @Insert
     void insert(Prenotazione prenotazione);
 
-    @Query("SELECT * FROM Prenotazione")
+    @Query("SELECT * FROM Prenotazione ORDER BY dataInizio ASC")
     List<Prenotazione> getAllPrenotazioni();
 
     @Delete
@@ -23,4 +23,7 @@ public interface PrenotazioneDao {
 
     @Query("DELETE FROM Prenotazione")
     void deleteAllPrenotazioni();
+
+    @Query("SELECT * FROM Prenotazione WHERE id = :id")
+    Prenotazione getById(int id);
 }
