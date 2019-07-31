@@ -49,6 +49,11 @@ public class PrenotazioniActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(PrenotazioniActivity.this, MainActivity.class));
+    }
+
     private TableRow generateRow(final Prenotazione prenotazione){
         final TableRow tableRow = new TableRow(this);
         TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, 150);

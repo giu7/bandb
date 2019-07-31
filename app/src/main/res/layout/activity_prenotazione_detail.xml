@@ -1,358 +1,384 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:layout_constraintBottom_toBottomOf="parent"
-    android:layout_margin="10dp" >
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.PrenotazioneDetailActivity"
+    android:layout_marginTop="5dp">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/header"
         android:layout_height="match_parent"
-        tools:context=".ui.activities.PrenotazioneDetailActivity" >
-
-        <TextView
-            android:id="@+id/dettagli_prenotazione"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="@string/dettagli_prenotazione"
-            android:textSize="30sp"
-            android:gravity="center_vertical"
-            android:layout_alignParentTop="true"/>
+        android:layout_width="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_above="@id/footer"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
 
         <LinearLayout
-            android:id="@+id/dettagli_checkin_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@id/dettagli_prenotazione">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="130dp"
+                android:id="@+id/dettagli_prenotazione"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="@string/dettagli_prenotazione"
+                android:textSize="30sp"
+                android:gravity="center_vertical"
+                android:layout_alignParentTop="true"/>
+
+            <LinearLayout
+                android:id="@+id/dettagli_checkin_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Check-In: "
-                android:layout_margin="5dp"/>
+                android:orientation="horizontal"
+                android:layout_below="@id/dettagli_prenotazione">
+
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="Check-In: "
+                    android:layout_margin="5dp"/>
+
+                <TextView
+                    android:id="@+id/dettagli_checkin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    tools:text="12/12/2012"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dettagli_checkout_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/dettagli_checkin_layout">
+
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="Check-Out: "
+                    android:layout_margin="5dp"/>
+
+                <TextView
+                    android:id="@+id/dettagli_checkout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    tools:text="12/12/2012"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dettagli_creationtime_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/dettagli_checkout_layout">
+
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="Data prenotazione: "
+                    android:layout_margin="5dp"/>
+
+                <TextView
+                    android:id="@+id/dettagli_creationtime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center_vertical"
+                    tools:text="12/12/2012 12:45"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dettagli_pagato_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/dettagli_creationtime_layout">
+
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="Pagato: "
+                    android:layout_margin="5dp"/>
+
+                <TextView
+                    android:id="@+id/dettagli_pagato"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center_vertical"
+                    tools:text="Si"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dettagli_metodo_pagamento_layout"
+                android:visibility="invisible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/dettagli_pagato_layout">
+
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="Metodo Pagamento: "
+                    android:layout_margin="5dp"/>
+
+                <TextView
+                    android:id="@+id/dettagli_metodo_pagamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center_vertical"
+                    tools:text="Bonifico"/>
+
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/dettagli_checkin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                tools:text="12/12/2012"/>
+                android:id="@+id/dettagli_camera"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="@string/dettagli_camera"
+                android:textSize="30sp"
+                android:gravity="center_vertical"
+                android:layout_below="@id/dettagli_metodo_pagamento_layout"/>
 
+            <LinearLayout
+                android:id="@+id/dettagli_nome_camera_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/dettagli_camera">
+
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="Camera: "
+                    android:layout_margin="5dp"/>
+
+                <TextView
+                    android:id="@+id/dettagli_nome_camera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    tools:text="Verde"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dettagli_letti_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/dettagli_nome_camera_layout">
+
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="Posti Letto: "
+                    android:layout_margin="5dp"/>
+
+                <TextView
+                    android:id="@+id/dettagli_letti"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    tools:text="2"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dettagli_tv_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/dettagli_letti_layout">
+
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="TV in camera: "
+                    android:layout_margin="5dp"/>
+
+                <TextView
+                    android:id="@+id/dettagli_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    tools:text="No"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dettagli_bagno_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/dettagli_tv_layout">
+
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="Bagno in camera: "
+                    android:layout_margin="5dp"/>
+
+                <TextView
+                    android:id="@+id/dettagli_bagno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    tools:text="Si"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dettagli_prezzo_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/dettagli_bagno_layout">
+
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="Prezzo per notte: € "
+                    android:layout_margin="5dp"/>
+
+                <TextView
+                    android:id="@+id/dettagli_prezzo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    tools:text="777"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/dettagli_ospite"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="@string/dettagli_ospite"
+                android:textSize="30sp"
+                android:gravity="center_vertical"
+                android:layout_below="@id/dettagli_prezzo_layout"/>
+
+            <LinearLayout
+                android:id="@+id/dettagli_nome_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/dettagli_ospite">
+
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="Nome: "
+                    android:layout_margin="5dp"/>
+
+                <TextView
+                    android:id="@+id/dettagli_nome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    tools:text="Giuseppe"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dettagli_cognome_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/dettagli_nome_layout">
+
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="Cognome: "
+                    android:layout_margin="5dp"/>
+
+                <TextView
+                    android:id="@+id/dettagli_cognome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    tools:text="Piano"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dettagli_telefono_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/dettagli_cognome_layout">
+
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="Telefono: "
+                    android:layout_margin="5dp"/>
+
+                <TextView
+                    android:id="@+id/dettagli_telefono"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    tools:text="3452645789"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dettagli_mail_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/dettagli_telefono_layout">
+
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="E-mail: "
+                    android:layout_margin="5dp"/>
+
+                <TextView
+                    android:id="@+id/dettagli_mail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    tools:text="fjkdfs@dsfsd.com"/>
+
+            </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/dettagli_checkout_layout"
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/elimina_prenotazione_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@id/dettagli_checkin_layout">
+            android:textSize="24dp"
+            android:text="@string/elimina_prenotazione"
+            android:gravity="center"
+            android:padding="15dp" />
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="Check-Out: "
-                android:layout_margin="5dp"/>
-
-            <TextView
-                android:id="@+id/dettagli_checkout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                tools:text="12/12/2012"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/dettagli_creationtime_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@id/dettagli_checkout_layout">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="Data prenotazione: "
-                android:layout_margin="5dp"/>
-
-            <TextView
-                android:id="@+id/dettagli_creationtime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_gravity="center_vertical"
-                tools:text="12/12/2012 12:45"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/dettagli_pagato_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@id/dettagli_creationtime_layout">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="Pagato: "
-                android:layout_margin="5dp"/>
-
-            <TextView
-                android:id="@+id/dettagli_pagato"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_gravity="center_vertical"
-                tools:text="Si"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/dettagli_metodo_pagamento_layout"
-            android:visibility="invisible"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@id/dettagli_pagato_layout">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="Metodo Pagamento: "
-                android:layout_margin="5dp"/>
-
-            <TextView
-                android:id="@+id/dettagli_metodo_pagamento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_gravity="center_vertical"
-                tools:text="Bonifico"/>
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/dettagli_camera"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="@string/dettagli_camera"
-            android:textSize="30sp"
-            android:gravity="center_vertical"
-            android:layout_below="@id/dettagli_metodo_pagamento_layout"/>
-
-        <LinearLayout
-            android:id="@+id/dettagli_nome_camera_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@id/dettagli_camera">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="Camera: "
-                android:layout_margin="5dp"/>
-
-            <TextView
-                android:id="@+id/dettagli_nome_camera"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                tools:text="Verde"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/dettagli_letti_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@id/dettagli_nome_camera_layout">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="Posti Letto: "
-                android:layout_margin="5dp"/>
-
-            <TextView
-                android:id="@+id/dettagli_letti"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                tools:text="2"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/dettagli_tv_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@id/dettagli_letti_layout">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="TV in camera: "
-                android:layout_margin="5dp"/>
-
-            <TextView
-                android:id="@+id/dettagli_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                tools:text="No"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/dettagli_bagno_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@id/dettagli_tv_layout">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="Bagno in camera: "
-                android:layout_margin="5dp"/>
-
-            <TextView
-                android:id="@+id/dettagli_bagno"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                tools:text="Si"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/dettagli_prezzo_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@id/dettagli_bagno_layout">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="Prezzo per notte: € "
-                android:layout_margin="5dp"/>
-
-            <TextView
-                android:id="@+id/dettagli_prezzo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                tools:text="777"/>
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/dettagli_ospite"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="@string/dettagli_ospite"
-            android:textSize="30sp"
-            android:gravity="center_vertical"
-            android:layout_below="@id/dettagli_prezzo_layout"/>
-
-        <LinearLayout
-            android:id="@+id/dettagli_nome_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@id/dettagli_ospite">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="Nome: "
-                android:layout_margin="5dp"/>
-
-            <TextView
-                android:id="@+id/dettagli_nome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                tools:text="Giuseppe"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/dettagli_cognome_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@id/dettagli_nome_layout">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="Cognome: "
-                android:layout_margin="5dp"/>
-
-            <TextView
-                android:id="@+id/dettagli_cognome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                tools:text="Piano"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/dettagli_telefono_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@id/dettagli_cognome_layout">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="Telefono: "
-                android:layout_margin="5dp"/>
-
-            <TextView
-                android:id="@+id/dettagli_telefono"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                tools:text="3452645789"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/dettagli_mail_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@id/dettagli_telefono_layout">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="E-mail: "
-                android:layout_margin="5dp"/>
-
-            <TextView
-                android:id="@+id/dettagli_mail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                tools:text="fjkdfs@dsfsd.com"/>
-
-        </LinearLayout>
-
-    </RelativeLayout>
-
-</ScrollView>
+</RelativeLayout>

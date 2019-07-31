@@ -1,9 +1,10 @@
 package com.giu7.bandb.ui.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -35,6 +36,8 @@ public class PrenotazioneDetailActivity extends AppCompatActivity {
     //ospite details
     TextView nomeOspite, cognomeOspite, telefono, mail;
 
+    Button elimina;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +61,9 @@ public class PrenotazioneDetailActivity extends AppCompatActivity {
         telefono = findViewById(R.id.dettagli_telefono);
         mail = findViewById(R.id.dettagli_mail);
 
-        Prenotazione prenotazione = getDbManager().prenotazioneDao().getById(getIntent().getIntExtra("idPrenotazione", -1));
+        elimina = findViewById(R.id.elimina_prenotazione_btn);
+
+        final Prenotazione prenotazione = getDbManager().prenotazioneDao().getById(getIntent().getIntExtra("idPrenotazione", -1));
         Ospite ospite = getDbManager().ospiteDao().getById(prenotazione.getIdOspite());
         Camera camera = getDbManager().cameraDao().getById(prenotazione.getNomeStanza());
 
@@ -84,6 +89,19 @@ public class PrenotazioneDetailActivity extends AppCompatActivity {
         cognomeOspite.setText(ospite.getCognome());
         telefono.setText(ospite.getTelefono());
         mail.setText(ospite.getMail());
+
+        elimina.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getDbManager().prenotazioneDao().delete(prenotazione);
+                startActivity(new Intent(PrenotazioneDetailActivity.this, PrenotazioniActivity.class));
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(PrenotazioneDetailActivity.this, PrenotazioniActivity.class));
     }
 
     private DbManager getDbManager(){

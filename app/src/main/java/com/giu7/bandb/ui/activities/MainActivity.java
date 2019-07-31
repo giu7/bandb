@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         prenotazioniBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //prenotazioniBtn.setText(prenotazioniBtn.getText()+"-");
                 startActivity(new Intent(MainActivity.this, PrenotazioniActivity.class));
             }
         });
@@ -49,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, CamereActivity.class));
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishAffinity();
     }
 
     private void setup(){
@@ -91,13 +96,13 @@ public class MainActivity extends AppCompatActivity {
         getDbManager().prenotazioneDao().insert(p2);
         getDbManager().prenotazioneDao().insert(p3);
 
-        List<Camera> camere = getDbManager().cameraDao().getAllCamere();
+        /*List<Camera> camere = getDbManager().cameraDao().getAllCamere();
         List<Ospite> ospiti = getDbManager().ospiteDao().getAllOspiti();
         List<Prenotazione> prenotazioni = getDbManager().prenotazioneDao().getAllPrenotazioni();
 
         Log.d(TAG, camere.toString());
         Log.d(TAG, ospiti.toString());
-        Log.d(TAG, prenotazioni.toString());
+        Log.d(TAG, prenotazioni.toString());*/
     }
 
     private DbManager getDbManager(){
