@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -32,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
         prenotazioniBtn = findViewById(R.id.prenotazioni_btn);
         camereBtn = findViewById(R.id.camere_btn);
-
-        setup();
 
         prenotazioniBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,8 +74,6 @@ public class MainActivity extends AppCompatActivity {
         Ospite lillo = new Ospite("Alessandro", "Littera", "3453434343", "lillo@lillolandia.it", "lillo", "pecora");
         Ospite geta = new Ospite("Gaetano", "La Porta", "34545454545", "geta@ares.it", "geta", "ares");
 
-        int i = 0;
-
         getDbManager().ospiteDao().insertOspite(giu);
         getDbManager().ospiteDao().insertOspite(lillo);
         getDbManager().ospiteDao().insertOspite(geta);
@@ -97,14 +96,35 @@ public class MainActivity extends AppCompatActivity {
         getDbManager().prenotazioneDao().insert(p1);
         getDbManager().prenotazioneDao().insert(p2);
         getDbManager().prenotazioneDao().insert(p3);
+    }
 
-        /*List<Camera> camere = getDbManager().cameraDao().getAllCamere();
-        List<Ospite> ospiti = getDbManager().ospiteDao().getAllOspiti();
-        List<Prenotazione> prenotazioni = getDbManager().prenotazioneDao().getAllPrenotazioni();
+    private void clearAll(){
+        getDbManager().prenotazioneDao().deleteAllPrenotazioni();
+        getDbManager().cameraDao().deleteAllCamere();
+        getDbManager().ospiteDao().deleteAllOspiti();
+    }
 
-        Log.d(TAG, camere.toString());
-        Log.d(TAG, ospiti.toString());
-        Log.d(TAG, prenotazioni.toString());*/
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.preload){
+            setup();
+            startActivity(new Intent(MainActivity.this, MainActivity.class));
+            return true;
+        }
+        else if (item.getItemId() == R.id.clear_all){
+            clearAll();
+            startActivity(new Intent(MainActivity.this, MainActivity.class));
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private DbManager getDbManager(){
