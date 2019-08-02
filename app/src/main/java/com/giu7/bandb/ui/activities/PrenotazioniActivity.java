@@ -30,8 +30,6 @@ public class PrenotazioniActivity extends AppCompatActivity {
 
     private DbManager dbManager;
 
-    //private DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-
     private TableLayout table;
     private Button addPrenotazione;
     private List<Prenotazione> prenotazioni;
@@ -43,6 +41,13 @@ public class PrenotazioniActivity extends AppCompatActivity {
 
         table = findViewById(R.id.prenotazioni_table);
         addPrenotazione = findViewById(R.id.add_prenotazione_btn);
+
+        addPrenotazione.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(PrenotazioniActivity.this, NewPrenotazioneActivity.class));
+            }
+        });
 
         prenotazioni = getDbManager().prenotazioneDao().getAllPrenotazioni();
 
