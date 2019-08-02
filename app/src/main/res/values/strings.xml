@@ -13,4 +13,6 @@
     <string name="dettagli_camera">Dettagli camera</string>
     <string name="dettagli_ospite">Dettagli ospite</string>
     <string name="elimina_prenotazione">Elimina prenotazione</string>
+    <string name="preload_demo">Preload Demo</string>
+    <string name="nuova_prenotazione">Nuova prenotazione</string>
 </resources>

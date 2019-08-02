@@ -73,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
         Ospite lillo = new Ospite("Alessandro", "Littera", "3453434343", "lillo@lillolandia.it", "lillo", "pecora");
         Ospite geta = new Ospite("Gaetano", "La Porta", "34545454545", "geta@ares.it", "geta", "ares");
 
+        int i = 0;
+
         getDbManager().ospiteDao().insertOspite(giu);
         getDbManager().ospiteDao().insertOspite(lillo);
         getDbManager().ospiteDao().insertOspite(geta);

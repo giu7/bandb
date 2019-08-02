@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -32,6 +33,7 @@ public class PrenotazioniActivity extends AppCompatActivity {
     //private DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
     private TableLayout table;
+    private Button addPrenotazione;
     private List<Prenotazione> prenotazioni;
 
     @Override
@@ -40,6 +42,7 @@ public class PrenotazioniActivity extends AppCompatActivity {
         setContentView(R.layout.activity_prenotazioni);
 
         table = findViewById(R.id.prenotazioni_table);
+        addPrenotazione = findViewById(R.id.add_prenotazione_btn);
 
         prenotazioni = getDbManager().prenotazioneDao().getAllPrenotazioni();
 
