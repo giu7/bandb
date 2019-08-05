@@ -16,4 +16,9 @@
     <string name="preload_demo">Preload Demo</string>
     <string name="nuova_prenotazione">Nuova prenotazione</string>
     <string name="clear_database">Clear database</string>
+    <string name="ospite">Ospite:</string>
+    <string name="camera">Camera:</string>
+    <string name="check_in">Check In:</string>
+    <string name="check_out">Check-Out:</string>
+    <string name="aggiungi_prenotazione">Aggiungi Prenotazione</string>
 </resources>

@@ -7,20 +7,104 @@
     tools:context=".ui.activities.PrenotazioneDetailActivity"
     android:layout_marginTop="5dp">
 
-    <Spinner
-        android:id="@+id/ospite_spinner"
+    <LinearLayout
+        android:id="@+id/ospite_spinner_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        android:layout_alignParentTop="true">
-    </Spinner>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ospite"/>
 
-    <Spinner
-        android:id="@+id/camera_spinner"
+        <Spinner
+            android:id="@+id/ospite_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentTop="true">
+        </Spinner>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/camera_spinner_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/ospite_spinner_layout">
 
-        android:layout_below="@id/ospite_spinner">
-    </Spinner>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/camera"/>
+
+        <Spinner
+            android:id="@+id/camera_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentTop="true">
+        </Spinner>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/checkin_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/camera_spinner_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/check_in"/>
+
+        <EditText
+            android:id="@+id/checkin_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Data Check-In"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/checkout_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/checkin_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/check_out"/>
+
+        <EditText
+            android:id="@+id/checkout_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Data Check-Out"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/crea_prenotazione_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24dp"
+            android:text="@string/aggiungi_prenotazione"
+            android:gravity="center"
+            android:padding="15dp" />
+    </LinearLayout>
 
 </RelativeLayout>
