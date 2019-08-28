@@ -18,10 +18,19 @@
     <Button
         android:id="@+id/camere_btn"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="100dp"
         android:layout_margin="5dp"
         android:layout_below="@id/prenotazioni_btn"
         android:text="@string/camere"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/ospiti_btn"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="5dp"
+        android:layout_below="@id/camere_btn"
+        android:text="@string/ospiti"
         android:textAlignment="center" />
 
 </RelativeLayout>

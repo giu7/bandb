@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button prenotazioniBtn;
     private Button camereBtn;
+    private Button ospitiBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         prenotazioniBtn = findViewById(R.id.prenotazioni_btn);
         camereBtn = findViewById(R.id.camere_btn);
+        ospitiBtn = findViewById(R.id.ospiti_btn);
 
         prenotazioniBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +49,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, CamereActivity.class));
+            }
+        });
+
+        ospitiBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, OspitiActivity.class));
             }
         });
     }

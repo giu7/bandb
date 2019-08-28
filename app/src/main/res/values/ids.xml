@@ -5,4 +5,7 @@
     <item type="id" name="prenotazioni_camera_tv" />
     <item type="id" name="prenotazioni_checkin_tv" />
 
+    <item type="id" name="ospiti_nome_tv" />
+    <item type="id" name="ospiti_cognome_tv" />
+
 </resources>

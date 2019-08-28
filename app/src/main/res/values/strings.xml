@@ -21,4 +21,8 @@
     <string name="check_in">Check In:</string>
     <string name="check_out">Check-Out:</string>
     <string name="aggiungi_prenotazione">Aggiungi Prenotazione</string>
+    <string name="ospiti">Ospiti</string>
+    <string name="nuovo_ospite">Nuovo Ospite</string>
+    <string name="nome">Nome</string>
+    <string name="aggiungi_ospite">Aggiungi Ospite</string>
 </resources>

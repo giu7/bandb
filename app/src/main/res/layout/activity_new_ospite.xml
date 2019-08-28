@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.PrenotazioneDetailActivity"
+    android:layout_marginTop="5dp">
+
+    <LinearLayout
+        android:id="@+id/nome_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp"
+        android:layout_alignParentTop="true">
+
+        <EditText
+            android:id="@+id/nome_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Inserisci nome"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cognome_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp"
+        android:layout_below="@id/nome_layout">
+
+        <EditText
+            android:id="@+id/cognome_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Inserisci cognome"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/telefono_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp"
+        android:layout_below="@id/cognome_layout">
+
+        <EditText
+            android:id="@+id/telefono_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Inserisci numero di telefono"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/email_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp"
+        android:layout_below="@id/telefono_layout">
+
+        <EditText
+            android:id="@+id/email_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Inserisci email"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/crea_ospite_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24dp"
+            android:text="@string/aggiungi_ospite"
+            android:gravity="center"
+            android:padding="15dp" />
+    </LinearLayout>
+
+</RelativeLayout>
