@@ -82,7 +82,14 @@ public class OspitiActivity extends AppCompatActivity {
 
         tableRow.setPadding(10,10,10,10);
 
-        //TODO ospite onClick
+        tableRow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OspitiActivity.this, OspiteDetailActivity.class);
+                intent.putExtra("idOspite", ospite.getId());
+                startActivity(intent);
+            }
+        });
 
         return tableRow;
     }

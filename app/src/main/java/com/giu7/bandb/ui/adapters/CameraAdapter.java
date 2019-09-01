@@ -1,6 +1,7 @@
 package com.giu7.bandb.ui.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.giu7.bandb.R;
 import com.giu7.bandb.models.Camera;
+import com.giu7.bandb.ui.activities.UpdateCameraActivity;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -20,6 +22,9 @@ import java.util.List;
 import static com.giu7.bandb.utils.MyUtils.getSiNo;
 
 public class CameraAdapter extends RecyclerView.Adapter {
+
+    private static final String TAG = "CamereAdapter";
+
     private LayoutInflater inflater;
     private Context context;
     private List<Camera> camere;
@@ -68,6 +73,15 @@ public class CameraAdapter extends RecyclerView.Adapter {
             tvCameraTv = itemView.findViewById(R.id.camera_tv_tv);
             bagnoCameraTv = itemView.findViewById(R.id.camera_bagno_tv);
             prezzoCameraTv = itemView.findViewById(R.id.camera_prezzo_tv);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, UpdateCameraActivity.class);
+                    intent.putExtra("nome", camere.get(getAdapterPosition()).getNome());
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

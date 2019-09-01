@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -25,13 +26,13 @@ public class NewOspiteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_ospite);
 
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+
         nome = findViewById(R.id.nome_et);
         cognome = findViewById(R.id.cognome_et);
         telefono = findViewById(R.id.telefono_et);
         email = findViewById(R.id.email_et);
-
-        //todo impostare le tastiere giuste e righe single line
-
+        
         aggiungi = findViewById(R.id.crea_ospite_btn);
         aggiungi.setOnClickListener(new View.OnClickListener() {
             @Override

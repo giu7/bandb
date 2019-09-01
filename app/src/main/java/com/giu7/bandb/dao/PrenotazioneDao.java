@@ -7,6 +7,7 @@ import android.arch.persistence.room.Query;
 
 import com.giu7.bandb.models.Prenotazione;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Dao
@@ -26,4 +27,10 @@ public interface PrenotazioneDao {
 
     @Query("SELECT * FROM Prenotazione WHERE id = :id")
     Prenotazione getById(int id);
+
+    @Query("SELECT * FROM Prenotazione WHERE idOspite = :id")
+    List<Prenotazione> getPrenotazioniByIdOspite(int id);
+
+    @Query("select count(*) as num_conflicts from prenotazione where nomeStanza = :camera and (dataInizio <= :checkOut) and (dataFine >= :checkIn)")
+    int getConflictsForDates(String camera, LocalDateTime checkIn, LocalDateTime checkOut);
 }

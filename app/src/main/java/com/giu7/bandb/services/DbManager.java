@@ -3,6 +3,7 @@ package com.giu7.bandb.services;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 
 import com.giu7.bandb.dao.CameraDao;
@@ -11,8 +12,10 @@ import com.giu7.bandb.dao.PrenotazioneDao;
 import com.giu7.bandb.models.Camera;
 import com.giu7.bandb.models.Ospite;
 import com.giu7.bandb.models.Prenotazione;
+import com.giu7.bandb.utils.LocalDateTimeTypeConverters;
 
 @Database(entities = {Camera.class, Ospite.class, Prenotazione.class}, version = 4)
+@TypeConverters({LocalDateTimeTypeConverters.class})
 public abstract class DbManager extends RoomDatabase {
     private static DbManager INSTANCE;
 

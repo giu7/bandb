@@ -25,4 +25,14 @@
     <string name="nuovo_ospite">Nuovo Ospite</string>
     <string name="nome">Nome</string>
     <string name="aggiungi_ospite">Aggiungi Ospite</string>
+    <string name="elimina_ospite">Elimina ospite</string>
+    <string name="nome_camera">Nome camera</string>
+    <string name="salva">Salva</string>
+    <string name="posti_letto">Posti Letto</string>
+    <string name="si">Si</string>
+    <string name="no">No</string>
+    <string name="tv_in_camera">TV in camera</string>
+    <string name="prezzo_per_notte">Prezzo per notte</string>
+    <string name="bagno_in_camera">Bagno in camera</string>
+
 </resources>

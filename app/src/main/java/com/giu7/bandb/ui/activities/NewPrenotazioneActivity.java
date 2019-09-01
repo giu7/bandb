@@ -1,5 +1,6 @@
 package com.giu7.bandb.ui.activities;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -73,13 +74,18 @@ public class NewPrenotazioneActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 if (checkDate()){
-                    Log.d(TAG, checkInDateTime.toString());
-                    Log.d(TAG, checkOutDateTime.toString());
-
-
-                    return;
+                    Prenotazione prenotazione = new Prenotazione(checkInDateTime, checkOutDateTime, false, null, ospite.getId(), camera.getNome());
+                    getDbManager().prenotazioneDao().insert(prenotazione);
+                    startActivity(new Intent(NewPrenotazioneActivity.this, PrenotazioniActivity.class));
                 }
-                Log.d(TAG, "Errori a caso");
+                else {
+                    new AlertDialog.Builder(NewPrenotazioneActivity.this)
+                            .setTitle("Errore")
+                            .setMessage("Impossibile creare la prenotazione! Controlla le date!")
+                            .setNeutralButton(android.R.string.ok, null)
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                }
             }
         });
     }
@@ -195,17 +201,14 @@ public class NewPrenotazioneActivity extends AppCompatActivity{
             return false;
         }
 
-        /*List<Prenotazione> prenotazioni = getDbManager().prenotazioneDao().getAllPrenotazioni();
+        int conflicts = getDbManager().prenotazioneDao().getConflictsForDates(camera.getNome(), checkInDateTime, checkOutDateTime);
+        Log.d(TAG,String.valueOf(conflicts));
 
-       for (Prenotazione prenotazione : prenotazioni){
-           if (prenotazione.getNomeStanza().equals(camera)){
-               if (prenotazione.getDataInizio().isBefore(checkInDateTime))&&(prenotazione.getDataFine().isAfter(checkInDateTime))
-                       return false;
+        if (conflicts == 0){
+            return true;
+        }
 
-           }
-       }*/
-
-        return true;
+        return false;
     }
 
     private DbManager getDbManager(){

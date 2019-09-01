@@ -19,6 +19,8 @@
             android:id="@+id/nome_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textCapWords"
+            android:maxLines="1"
             android:hint="Inserisci nome"/>
 
     </LinearLayout>
@@ -35,6 +37,8 @@
             android:id="@+id/cognome_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textCapWords"
+            android:maxLines="1"
             android:hint="Inserisci cognome"/>
 
     </LinearLayout>
@@ -51,6 +55,8 @@
             android:id="@+id/telefono_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:maxLines="1"
             android:hint="Inserisci numero di telefono"/>
 
     </LinearLayout>
@@ -67,6 +73,8 @@
             android:id="@+id/email_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
             android:hint="Inserisci email"/>
 
     </LinearLayout>

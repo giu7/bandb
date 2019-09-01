@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activities.NewOspiteActivity"></activity>
+        <activity android:name=".ui.activities.UpdateCameraActivity"></activity>
+        <activity android:name=".ui.activities.OspiteDetailActivity" />
+        <activity android:name=".ui.activities.NewOspiteActivity" />
         <activity android:name=".ui.activities.OspitiActivity" />
         <activity android:name=".ui.activities.NewPrenotazioneActivity" />
         <activity android:name=".ui.activities.PrenotazioneDetailActivity" />

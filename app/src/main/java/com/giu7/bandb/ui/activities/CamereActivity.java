@@ -1,5 +1,6 @@
 package com.giu7.bandb.ui.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -36,6 +37,11 @@ public class CamereActivity extends AppCompatActivity {
 
         camereRV.setLayoutManager(layoutManager);
         camereRV.setAdapter(cameraAdapter);
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(CamereActivity.this, MainActivity.class));
     }
 
     private DbManager getDbManager(){
