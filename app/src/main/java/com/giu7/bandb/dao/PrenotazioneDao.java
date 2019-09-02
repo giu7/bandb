@@ -33,4 +33,7 @@ public interface PrenotazioneDao {
 
     @Query("select count(*) as num_conflicts from prenotazione where nomeStanza = :camera and (dataInizio <= :checkOut) and (dataFine >= :checkIn)")
     int getConflictsForDates(String camera, LocalDateTime checkIn, LocalDateTime checkOut);
+
+    @Query("UPDATE Prenotazione SET nomeStanza = :newNome WHERE nomeStanza = :oldNome")
+    void updateFK(String oldNome, String newNome);
 }

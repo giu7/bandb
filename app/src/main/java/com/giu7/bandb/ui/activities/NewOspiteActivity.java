@@ -32,7 +32,7 @@ public class NewOspiteActivity extends AppCompatActivity {
         cognome = findViewById(R.id.cognome_et);
         telefono = findViewById(R.id.telefono_et);
         email = findViewById(R.id.email_et);
-        
+
         aggiungi = findViewById(R.id.crea_ospite_btn);
         aggiungi.setOnClickListener(new View.OnClickListener() {
             @Override

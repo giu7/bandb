@@ -4,6 +4,9 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import java.util.Objects;
 
 @Entity
@@ -77,14 +80,29 @@ public class Camera {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
+
         if (o == null || getClass() != o.getClass()) return false;
+
         Camera camera = (Camera) o;
-        return Objects.equals(nome, camera.nome);
+
+        return new EqualsBuilder()
+                .append(letti, camera.letti)
+                .append(tv, camera.tv)
+                .append(bagno, camera.bagno)
+                .append(prezzo, camera.prezzo)
+                .append(nome, camera.nome)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nome);
+        return new HashCodeBuilder(17, 37)
+                .append(nome)
+                .append(letti)
+                .append(tv)
+                .append(bagno)
+                .append(prezzo)
+                .toHashCode();
     }
 
     @Override
