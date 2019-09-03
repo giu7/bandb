@@ -56,7 +56,7 @@ public class UpdateCameraActivity extends AppCompatActivity {
 
         String nomeCamera = getIntent().getStringExtra("nome");
 
-        final Camera camera = getDbManager().cameraDao().getById(nomeCamera);
+        final Camera camera = getDbManager().cameraDao().getByNome(nomeCamera);
 
         nome.setText(StringUtils.capitalize(camera.getNome()));
         letti.setMinValue(1);
@@ -92,7 +92,7 @@ public class UpdateCameraActivity extends AppCompatActivity {
 
                 if (!camera.equals(nuova)){
                     Log.d(TAG+1, "Updating camera");
-                    if (!camera.getNome().equals(nome.getText().toString())){
+                    if (!camera.getNome().equals(nome.getText().toString().toLowerCase())){
                         getDbManager().cameraDao().insertCamera(nuova);
                         getDbManager().prenotazioneDao().updateFK(camera.getNome(), nome.getText().toString().toLowerCase());
                         getDbManager().cameraDao().deleteCamera(camera);

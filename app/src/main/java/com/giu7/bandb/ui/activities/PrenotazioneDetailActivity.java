@@ -65,7 +65,7 @@ public class PrenotazioneDetailActivity extends AppCompatActivity {
 
         final Prenotazione prenotazione = getDbManager().prenotazioneDao().getById(getIntent().getIntExtra("idPrenotazione", -1));
         Ospite ospite = getDbManager().ospiteDao().getById(prenotazione.getIdOspite());
-        Camera camera = getDbManager().cameraDao().getById(prenotazione.getNomeStanza());
+        Camera camera = getDbManager().cameraDao().getByNome(prenotazione.getNomeStanza());
 
         Date checkInDate = Date.from(prenotazione.getDataInizio().atZone(ZoneId.systemDefault()).toInstant());
         checkIn.setText(MyUtils.formatter_ddMMyyyy.format(checkInDate));

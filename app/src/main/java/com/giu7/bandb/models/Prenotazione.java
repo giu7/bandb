@@ -9,6 +9,8 @@ import android.support.annotation.NonNull;
 
 import com.giu7.bandb.utils.LocalDateTimeTypeConverters;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -115,12 +117,20 @@ public class Prenotazione {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
+
         if (o == null || getClass() != o.getClass()) return false;
+
         Prenotazione that = (Prenotazione) o;
-        return idOspite == that.idOspite &&
-                Objects.equals(dataInizio, that.dataInizio) &&
-                Objects.equals(dataFine, that.dataFine) &&
-                Objects.equals(nomeStanza, that.nomeStanza);
+
+        return new EqualsBuilder()
+                .append(id, that.id)
+                .append(pagato, that.pagato)
+                .append(idOspite, that.idOspite)
+                .append(dataInizio, that.dataInizio)
+                .append(dataFine, that.dataFine)
+                .append(metodoPagamento, that.metodoPagamento)
+                .append(nomeStanza, that.nomeStanza)
+                .isEquals();
     }
 
     @Override

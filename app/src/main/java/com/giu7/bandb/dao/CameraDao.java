@@ -4,8 +4,6 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
-import android.arch.persistence.room.Update;
-import android.provider.ContactsContract;
 
 import com.giu7.bandb.models.Camera;
 
@@ -28,7 +26,7 @@ public interface CameraDao {
     void deleteCamera(Camera camera);
 
     @Query("SELECT * FROM Camera WHERE nome like :nome")
-    Camera getById(String nome);
+    Camera getByNome(String nome);
 
     @Query("UPDATE Camera SET " +
             "nome = :nome, " +
