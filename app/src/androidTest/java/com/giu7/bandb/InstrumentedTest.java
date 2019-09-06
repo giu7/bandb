@@ -327,5 +327,92 @@ public class InstrumentedTest {
         assertEquals(pre1, pre2);
     }
 
-    
+    @Test
+    public void getPrenotazioniByIdOspiteTest(){
+        Camera viola = new Camera("Viola", 2, false, true, null, 777);
+        Camera rossa = new Camera("Rossa", 2, true, false, null, 666);
+        Camera bianca = new Camera("Bianca", 3, true, false, null, 1000);
+
+        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg","giu", "seppe");
+        Ospite gae = new Ospite("Gaetano", "La Porta", "3542145687", "aa@a.aa","gae", "tano");
+
+        LocalDateTime ieri = LocalDateTime.of(2019, Month.SEPTEMBER, 2, 10, 0);
+        LocalDateTime oggi = LocalDateTime.of(2019, Month.SEPTEMBER, 3, 10, 0);
+        LocalDateTime domani = LocalDateTime.of(2019, Month.SEPTEMBER, 4, 10, 0);
+        LocalDateTime dopodomani = LocalDateTime.of(2019, Month.SEPTEMBER, 5, 10, 0);
+
+        getDbManager().cameraDao().insertCamera(viola);
+        getDbManager().cameraDao().insertCamera(rossa);
+        getDbManager().cameraDao().insertCamera(bianca);
+        getDbManager().ospiteDao().insertOspite(giu);
+        getDbManager().ospiteDao().insertOspite(gae);
+
+        giu = getDbManager().ospiteDao().getByNomeAndCognome("Giuseppe", "Piano");
+        gae = getDbManager().ospiteDao().getByNomeAndCognome("Gaetano", "La Porta");
+
+        Prenotazione prenotazioneGiu1 = new Prenotazione(ieri, oggi,true,   "contanti", giu.getId(), "Viola");
+        Prenotazione prenotazioneGiu2 = new Prenotazione(domani, dopodomani,true,   "assegno", giu.getId(), "Bianca");
+        Prenotazione prenotazioneGae1 = new Prenotazione(ieri, dopodomani,false,   null, gae.getId(), "Rossa");
+
+        getDbManager().prenotazioneDao().insert(prenotazioneGiu1);
+        getDbManager().prenotazioneDao().insert(prenotazioneGiu2);
+        getDbManager().prenotazioneDao().insert(prenotazioneGae1);
+
+        List<Prenotazione> prenotazioniGiu = getDbManager().prenotazioneDao().getPrenotazioniByIdOspite(giu.getId());
+
+        assertEquals(prenotazioniGiu.size(), 2);
+        assertEquals(prenotazioniGiu.get(0).getMetodoPagamento(), "contanti");
+        assertEquals(prenotazioniGiu.get(1).getMetodoPagamento(), "assegno");
+    }
+
+    @Test
+    public void getConflictsForDatesTest(){
+        Camera viola = new Camera("Viola", 2, false, true, null, 777);
+
+        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg","giu", "seppe");
+        Ospite gae = new Ospite("Gaetano", "La Porta", "3542145687", "aa@a.aa","gae", "tano");
+
+        LocalDateTime ieri = LocalDateTime.of(2019, Month.SEPTEMBER, 2, 10, 0);
+        LocalDateTime oggi = LocalDateTime.of(2019, Month.SEPTEMBER, 3, 10, 0);
+        LocalDateTime domani = LocalDateTime.of(2019, Month.SEPTEMBER, 4, 10, 0);
+        LocalDateTime dopodomani = LocalDateTime.of(2019, Month.SEPTEMBER, 5, 10, 0);
+
+        getDbManager().cameraDao().insertCamera(viola);
+        getDbManager().ospiteDao().insertOspite(giu);
+        getDbManager().ospiteDao().insertOspite(gae);
+
+        giu = getDbManager().ospiteDao().getByNomeAndCognome("Giuseppe", "Piano");
+        gae = getDbManager().ospiteDao().getByNomeAndCognome("Gaetano", "La Porta");
+
+        Prenotazione prenotazioneGiu1 = new Prenotazione(ieri, domani,true,   "contanti", giu.getId(), "Viola");
+        getDbManager().prenotazioneDao().insert(prenotazioneGiu1);
+
+        int conflicts = getDbManager().prenotazioneDao().getConflictsForDates("Viola", oggi, dopodomani);
+
+        assertEquals(conflicts,1);
+    }
+
+    @Test
+    public void updateFKTest() {
+        Camera viola = new Camera("Viola", 2, false, true, null, 777);
+        Camera bianca = new Camera("Bianca", 2, false, true, null, 777);
+        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg","giu", "seppe");
+
+        getDbManager().cameraDao().insertCamera(viola);
+        getDbManager().cameraDao().insertCamera(bianca);
+        getDbManager().ospiteDao().insertOspite(giu);
+
+        giu = getDbManager().ospiteDao().getByNomeAndCognome("Giuseppe", "Piano");
+
+        LocalDateTime ieri = LocalDateTime.of(2019, Month.SEPTEMBER, 2, 10, 0);
+        LocalDateTime oggi = LocalDateTime.of(2019, Month.SEPTEMBER, 3, 10, 0);
+
+        Prenotazione prenotazioneGiu1 = new Prenotazione(ieri, oggi,true,   "contanti", giu.getId(), "Viola");
+        getDbManager().prenotazioneDao().insert(prenotazioneGiu1);
+
+        getDbManager().prenotazioneDao().updateFK("Viola", "Bianca");
+
+        assertEquals(getDbManager().prenotazioneDao().getAllPrenotazioni().get(0).getNomeStanza(), "Bianca");
+
+    }
 }
