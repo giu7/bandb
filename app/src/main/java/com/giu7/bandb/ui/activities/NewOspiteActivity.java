@@ -1,8 +1,10 @@
 package com.giu7.bandb.ui.activities;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.PhoneNumberUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -12,6 +14,9 @@ import android.widget.EditText;
 import com.giu7.bandb.R;
 import com.giu7.bandb.models.Ospite;
 import com.giu7.bandb.services.DbManager;
+import com.giu7.bandb.utils.MyUtils;
+
+import org.apache.commons.lang3.StringUtils;
 
 public class NewOspiteActivity extends AppCompatActivity {
 
@@ -48,6 +53,50 @@ public class NewOspiteActivity extends AppCompatActivity {
     }
 
     private void addOspite(){
+        if (!StringUtils.isAlpha(nome.getText().toString())){
+            new AlertDialog.Builder(NewOspiteActivity.this)
+                    .setTitle("Errore")
+                    .setMessage("Il nome può contenere solo caratteri")
+                    .setNeutralButton(android.R.string.ok, null)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+
+            return;
+        }
+
+        if (!StringUtils.isAlpha(cognome.getText().toString())){
+            new AlertDialog.Builder(NewOspiteActivity.this)
+                    .setTitle("Errore")
+                    .setMessage("Il cognome può contenere solo caratteri")
+                    .setNeutralButton(android.R.string.ok, null)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+
+            return;
+        }
+
+        if (!MyUtils.isPhoneValid(telefono.getText().toString())){
+            new AlertDialog.Builder(NewOspiteActivity.this)
+                    .setTitle("Errore")
+                    .setMessage("Inserire un numero di telefono valido!")
+                    .setNeutralButton(android.R.string.ok, null)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+
+            return;
+        }
+
+        if (!MyUtils.isEmailValid(email.getText().toString())){
+            new AlertDialog.Builder(NewOspiteActivity.this)
+                    .setTitle("Errore")
+                    .setMessage("Inserire un'email valida!")
+                    .setNeutralButton(android.R.string.ok, null)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+
+            return;
+        }
+
         Ospite ospite = new Ospite(nome.getText().toString(), cognome.getText().toString(), telefono.getText().toString(), email.getText().toString(), null, null);
         getDbManager().ospiteDao().insertOspite(ospite);
         startActivity(new Intent(NewOspiteActivity.this, OspitiActivity.class));

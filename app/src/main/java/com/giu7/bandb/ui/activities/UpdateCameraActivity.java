@@ -92,19 +92,23 @@ public class UpdateCameraActivity extends AppCompatActivity {
 
                 if (!camera.equals(nuova)){
                     Log.d(TAG+1, "Updating camera");
-                    if (!camera.getNome().equals(nome.getText().toString().toLowerCase())){
-                        getDbManager().cameraDao().insertCamera(nuova);
-                        getDbManager().prenotazioneDao().updateFK(camera.getNome(), nome.getText().toString().toLowerCase());
-                        getDbManager().cameraDao().deleteCamera(camera);
-                    }
-                    else{
-                        getDbManager().cameraDao().update(camera.getNome(), nome.getText().toString().toLowerCase(), letti.getValue(), tv, bagno, Double.valueOf(prezzo.getText().toString()));
-                    }
+                    updateCameraName(nuova, camera);
                 }
 
                 startActivity(new Intent(UpdateCameraActivity.this, CamereActivity.class));
             }
         });
+    }
+
+    private void updateCameraName(Camera nuova, Camera vecchia) {
+        if (!vecchia.getNome().equals(nome.getText().toString().toLowerCase())){
+            getDbManager().cameraDao().insertCamera(nuova);
+            getDbManager().prenotazioneDao().updateFK(vecchia.getNome(), nome.getText().toString().toLowerCase());
+            getDbManager().cameraDao().deleteCamera(vecchia);
+        }
+        else{
+            getDbManager().cameraDao().update(vecchia.getNome(), nome.getText().toString().toLowerCase(), letti.getValue(), nuova.isTv(), nuova.isBagno(), Double.valueOf(prezzo.getText().toString()));
+        }
     }
 
     @Override

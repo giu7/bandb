@@ -46,6 +46,17 @@ public class InstrumentedTest {
         getDbManager().ospiteDao().deleteAllOspiti();
     }
 
+    @Test
+    public void dbConnectionTest(){
+        DbManager dbManagerTest = getDbManager();
+
+        assertNotNull(dbManagerTest);
+
+        assertNotNull(getDbManager().cameraDao());
+        assertNotNull(getDbManager().ospiteDao());
+        assertNotNull(getDbManager().prenotazioneDao());
+    }
+
     //CameraDao tests
 
     @Test
