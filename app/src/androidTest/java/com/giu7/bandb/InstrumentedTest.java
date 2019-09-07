@@ -2,15 +2,12 @@ package com.giu7.bandb;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
-import android.support.test.espresso.matcher.PreferenceMatchers;
 import android.support.test.runner.AndroidJUnit4;
-import android.util.Log;
 
 import com.giu7.bandb.models.Camera;
 import com.giu7.bandb.models.Ospite;
 import com.giu7.bandb.models.Prenotazione;
 import com.giu7.bandb.services.DbManager;
-import com.giu7.bandb.ui.activities.OspitiActivity;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,8 +15,6 @@ import org.junit.runner.RunWith;
 
 import java.time.LocalDateTime;
 import java.time.Month;
-import java.time.temporal.TemporalUnit;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -125,15 +120,15 @@ public class InstrumentedTest {
 
     @Test
     public void insertOspite() {
-        Ospite ospite = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg","giu", "seppe");
+        Ospite ospite = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg");
         getDbManager().ospiteDao().insertOspite(ospite);
         assertEquals(getDbManager().ospiteDao().getAllOspiti().size(), 1);
     }
 
     @Test
     public void getAllOspitiTest(){
-        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg","giu", "seppe");
-        Ospite gae = new Ospite("Gaetano", "La Porta", "3542145687", "aa@a.aa","gae", "tano");
+        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg");
+        Ospite gae = new Ospite("Gaetano", "La Porta", "3542145687", "aa@a.aa");
 
         getDbManager().ospiteDao().insertOspite(giu);
         getDbManager().ospiteDao().insertOspite(gae);
@@ -147,7 +142,7 @@ public class InstrumentedTest {
 
     @Test
     public void getByNomeAndCognomeTest(){
-        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg","giu", "seppe");
+        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg");
         getDbManager().ospiteDao().insertOspite(giu);
 
         Ospite ospite = getDbManager().ospiteDao().getByNomeAndCognome("Giuseppe", "Piano");
@@ -157,7 +152,7 @@ public class InstrumentedTest {
 
     @Test
     public void getById(){
-        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg","giu", "seppe");
+        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg");
         getDbManager().ospiteDao().insertOspite(giu);
 
         Ospite ospite = getDbManager().ospiteDao().getByNomeAndCognome("Giuseppe", "Piano");
@@ -170,8 +165,8 @@ public class InstrumentedTest {
 
     @Test
     public void deleteOspiteTest(){
-        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg","giu", "seppe");
-        Ospite gae = new Ospite("Gaetano", "La Porta", "3542145687", "aa@a.aa","gae", "tano");
+        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg");
+        Ospite gae = new Ospite("Gaetano", "La Porta", "3542145687", "aa@a.aa");
 
         getDbManager().ospiteDao().insertOspite(giu);
         getDbManager().ospiteDao().insertOspite(gae);
@@ -187,8 +182,8 @@ public class InstrumentedTest {
 
     @Test
     public void deleteAllOspitiTest(){
-        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg","giu", "seppe");
-        Ospite gae = new Ospite("Gaetano", "La Porta", "3542145687", "aa@a.aa","gae", "tano");
+        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg");
+        Ospite gae = new Ospite("Gaetano", "La Porta", "3542145687", "aa@a.aa");
 
         getDbManager().ospiteDao().insertOspite(giu);
         getDbManager().ospiteDao().insertOspite(gae);
@@ -205,7 +200,7 @@ public class InstrumentedTest {
     @Test
     public void insertPrenotazioneTest(){
         Camera viola = new Camera("Viola", 2, false, true, null, 777);
-        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg","giu", "seppe");
+        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg");
 
         getDbManager().cameraDao().insertCamera(viola);
         getDbManager().ospiteDao().insertOspite(giu);
@@ -225,8 +220,8 @@ public class InstrumentedTest {
     public void getAllPrenotazioniTest(){
         Camera viola = new Camera("Viola", 2, false, true, null, 777);
         Camera rossa = new Camera("Rossa", 2, true, false, null, 666);
-        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg","giu", "seppe");
-        Ospite gae = new Ospite("Gaetano", "La Porta", "3542145687", "aa@a.aa","gae", "tano");
+        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg");
+        Ospite gae = new Ospite("Gaetano", "La Porta", "3542145687", "aa@a.aa");
 
         getDbManager().cameraDao().insertCamera(viola);
         getDbManager().cameraDao().insertCamera(rossa);
@@ -256,8 +251,8 @@ public class InstrumentedTest {
     public void deletePrenotazioneTest(){
         Camera viola = new Camera("Viola", 2, false, true, null, 777);
         Camera rossa = new Camera("Rossa", 2, true, false, null, 666);
-        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg","giu", "seppe");
-        Ospite gae = new Ospite("Gaetano", "La Porta", "3542145687", "aa@a.aa","gae", "tano");
+        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg");
+        Ospite gae = new Ospite("Gaetano", "La Porta", "3542145687", "aa@a.aa");
 
         getDbManager().cameraDao().insertCamera(viola);
         getDbManager().cameraDao().insertCamera(rossa);
@@ -288,8 +283,8 @@ public class InstrumentedTest {
     public void deleteAllPrenotazioniTest(){
         Camera viola = new Camera("Viola", 2, false, true, null, 777);
         Camera rossa = new Camera("Rossa", 2, true, false, null, 666);
-        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg","giu", "seppe");
-        Ospite gae = new Ospite("Gaetano", "La Porta", "3542145687", "aa@a.aa","gae", "tano");
+        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg");
+        Ospite gae = new Ospite("Gaetano", "La Porta", "3542145687", "aa@a.aa");
 
         getDbManager().cameraDao().insertCamera(viola);
         getDbManager().cameraDao().insertCamera(rossa);
@@ -318,7 +313,7 @@ public class InstrumentedTest {
     @Test
     public void getByIdTest() {
         Camera viola = new Camera("Viola", 2, false, true, null, 777);
-        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg", "giu", "seppe");
+        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg");
 
         getDbManager().cameraDao().insertCamera(viola);
         getDbManager().ospiteDao().insertOspite(giu);
@@ -344,8 +339,8 @@ public class InstrumentedTest {
         Camera rossa = new Camera("Rossa", 2, true, false, null, 666);
         Camera bianca = new Camera("Bianca", 3, true, false, null, 1000);
 
-        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg","giu", "seppe");
-        Ospite gae = new Ospite("Gaetano", "La Porta", "3542145687", "aa@a.aa","gae", "tano");
+        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg");
+        Ospite gae = new Ospite("Gaetano", "La Porta", "3542145687", "aa@a.aa");
 
         LocalDateTime ieri = LocalDateTime.of(2019, Month.SEPTEMBER, 2, 10, 0);
         LocalDateTime oggi = LocalDateTime.of(2019, Month.SEPTEMBER, 3, 10, 0);
@@ -380,8 +375,8 @@ public class InstrumentedTest {
     public void getConflictsForDatesTest(){
         Camera viola = new Camera("Viola", 2, false, true, null, 777);
 
-        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg","giu", "seppe");
-        Ospite gae = new Ospite("Gaetano", "La Porta", "3542145687", "aa@a.aa","gae", "tano");
+        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg");
+        Ospite gae = new Ospite("Gaetano", "La Porta", "3542145687", "aa@a.aa");
 
         LocalDateTime ieri = LocalDateTime.of(2019, Month.SEPTEMBER, 2, 10, 0);
         LocalDateTime oggi = LocalDateTime.of(2019, Month.SEPTEMBER, 3, 10, 0);
@@ -407,7 +402,7 @@ public class InstrumentedTest {
     public void updateFKTest() {
         Camera viola = new Camera("Viola", 2, false, true, null, 777);
         Camera bianca = new Camera("Bianca", 2, false, true, null, 777);
-        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg","giu", "seppe");
+        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789012", "gg@g.gg");
 
         getDbManager().cameraDao().insertCamera(viola);
         getDbManager().cameraDao().insertCamera(bianca);

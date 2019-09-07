@@ -4,8 +4,6 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.telephony.PhoneNumberUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -53,7 +51,7 @@ public class NewOspiteActivity extends AppCompatActivity {
     }
 
     private void addOspite(){
-        if (!StringUtils.isAlpha(nome.getText().toString())){
+        if ((!StringUtils.isAlpha(nome.getText().toString()))||(MyUtils.isNullOrEmpty(nome.getText().toString()))){
             new AlertDialog.Builder(NewOspiteActivity.this)
                     .setTitle("Errore")
                     .setMessage("Il nome può contenere solo caratteri")
@@ -64,7 +62,7 @@ public class NewOspiteActivity extends AppCompatActivity {
             return;
         }
 
-        if (!StringUtils.isAlpha(cognome.getText().toString())){
+        if ((!StringUtils.isAlpha(cognome.getText().toString()))||(MyUtils.isNullOrEmpty(cognome.getText().toString()))){
             new AlertDialog.Builder(NewOspiteActivity.this)
                     .setTitle("Errore")
                     .setMessage("Il cognome può contenere solo caratteri")
@@ -97,7 +95,7 @@ public class NewOspiteActivity extends AppCompatActivity {
             return;
         }
 
-        Ospite ospite = new Ospite(nome.getText().toString(), cognome.getText().toString(), telefono.getText().toString(), email.getText().toString(), null, null);
+        Ospite ospite = new Ospite(nome.getText().toString(), cognome.getText().toString(), telefono.getText().toString(), email.getText().toString());
         getDbManager().ospiteDao().insertOspite(ospite);
         startActivity(new Intent(NewOspiteActivity.this, OspitiActivity.class));
     }

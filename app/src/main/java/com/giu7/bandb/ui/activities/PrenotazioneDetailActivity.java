@@ -1,5 +1,7 @@
 package com.giu7.bandb.ui.activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -93,8 +95,19 @@ public class PrenotazioneDetailActivity extends AppCompatActivity {
         elimina.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getDbManager().prenotazioneDao().delete(prenotazione);
-                startActivity(new Intent(PrenotazioneDetailActivity.this, PrenotazioniActivity.class));
+                new AlertDialog.Builder(PrenotazioneDetailActivity.this)
+                        .setTitle("Attenzione")
+                        .setMessage("Sei sicuro di voler eliminare questa prenotazione?")
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                getDbManager().prenotazioneDao().delete(prenotazione);
+                                startActivity(new Intent(PrenotazioneDetailActivity.this, PrenotazioniActivity.class));
+                            }
+                        })
+                        .setNegativeButton(R.string.no, null)
+                        .show();
             }
         });
     }

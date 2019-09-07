@@ -3,7 +3,6 @@ package com.giu7.bandb.ui.activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,7 +16,6 @@ import com.giu7.bandb.models.Prenotazione;
 import com.giu7.bandb.services.DbManager;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -79,9 +77,9 @@ public class MainActivity extends AppCompatActivity {
         getDbManager().cameraDao().insertCamera(blu);
         getDbManager().cameraDao().insertCamera(arancione);
 
-        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789098", "giuseppe.piano98@gmail.com", "giuser", "password");
-        Ospite lillo = new Ospite("Alessandro", "Littera", "3453434343", "lillo@lillolandia.it", "lillo", "pecora");
-        Ospite geta = new Ospite("Gaetano", "La Porta", "34545454545", "geta@ares.it", "geta", "ares");
+        Ospite giu = new Ospite("Giuseppe", "Piano", "3456789098", "giuseppe.piano98@gmail.com");
+        Ospite lillo = new Ospite("Alessandro", "Littera", "3453434343", "lillo@lillolandia.it");
+        Ospite geta = new Ospite("Gaetano", "La Porta", "34545454545", "geta@ares.it");
 
         getDbManager().ospiteDao().insertOspite(giu);
         getDbManager().ospiteDao().insertOspite(lillo);

@@ -46,12 +46,23 @@ public class OspiteDetailActivity extends AppCompatActivity {
         });
     }
 
-    private void safeDelete(Ospite ospite){
+    private void safeDelete(final Ospite ospite){
         int count = getDbManager().prenotazioneDao().getPrenotazioniByIdOspite(ospite.getId()).size();
 
         if (count == 0){
-            getDbManager().ospiteDao().deleteOspite(ospite);
-            startActivity(new Intent(OspiteDetailActivity.this, OspitiActivity.class));
+            new AlertDialog.Builder(this)
+                    .setTitle("Attenzione")
+                    .setMessage("Sei sicuro di voler eliminare questo ospite?")
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            getDbManager().ospiteDao().deleteOspite(ospite);
+                            startActivity(new Intent(OspiteDetailActivity.this, OspitiActivity.class));
+                        }
+                    })
+                    .setNegativeButton(R.string.no, null)
+                    .show();
         }
         else {
             new AlertDialog.Builder(this)

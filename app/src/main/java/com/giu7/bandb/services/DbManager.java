@@ -14,7 +14,7 @@ import com.giu7.bandb.models.Ospite;
 import com.giu7.bandb.models.Prenotazione;
 import com.giu7.bandb.utils.LocalDateTimeTypeConverters;
 
-@Database(entities = {Camera.class, Ospite.class, Prenotazione.class}, version = 4)
+@Database(entities = {Camera.class, Ospite.class, Prenotazione.class}, version = 5)
 @TypeConverters({LocalDateTimeTypeConverters.class})
 public abstract class DbManager extends RoomDatabase {
     private static DbManager INSTANCE;

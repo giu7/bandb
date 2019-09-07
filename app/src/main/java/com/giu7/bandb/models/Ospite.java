@@ -12,15 +12,16 @@ public class Ospite {
     @PrimaryKey(autoGenerate = true)
     @NonNull
     private int id;
-    private String nome, cognome, telefono, mail, user, password;
+    private String nome;
+    private String cognome;
+    private String telefono;
+    private String mail;
 
-    public Ospite(String nome, String cognome, String telefono, String mail, String user, String password) {
+    public Ospite(String nome, String cognome, String telefono, String mail) {
         this.nome = nome;
         this.cognome = cognome;
         this.telefono = telefono;
         this.mail = mail;
-        this.user = user;
-        this.password = password;
     }
 
     public int getId() {
@@ -63,22 +64,6 @@ public class Ospite {
         this.mail = mail;
     }
 
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -101,8 +86,6 @@ public class Ospite {
                 ", cognome='" + cognome + '\'' +
                 ", telefono='" + telefono + '\'' +
                 ", mail='" + mail + '\'' +
-                ", user='" + user + '\'' +
-                ", password='" + password + '\'' +
                 '}';
     }
 }
